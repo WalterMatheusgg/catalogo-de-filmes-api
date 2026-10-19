@@ -47,8 +47,8 @@ cinema_service_db_data.json # Fixture
 Utilize **Python compatível com as dependências do projeto** e um ambiente virtual limpo:
 
 ```bash
-git clone https://github.com/WalterMatheusgg/py-movie-api.git
-cd py-movie-api
+git clone https://github.com/WalterMatheusgg/catalogo-de-filmes-api.git
+cd catalogo-de-filmes-api
 python3 -m venv .venv-local
 source .venv-local/bin/activate
 python -m pip install django djangorestframework
