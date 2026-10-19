@@ -1,25 +1,73 @@
-# Movie API
+<div align="center">
 
-- Read [the guideline](https://github.com/mate-academy/py-task-guideline/blob/main/README.md) before starting.
+# 🎬 Movie API
+### CRUD de filmes com Django REST Framework
 
-In this task, you should implement an API that provides CRUD operations for the Movie model.
+![Python](https://img.shields.io/badge/Python-3-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![Django](https://img.shields.io/badge/Django-092E20?style=for-the-badge&logo=django&logoColor=white)
+![DRF](https://img.shields.io/badge/DRF-REST%20API-A30000?style=for-the-badge)
+![SQLite](https://img.shields.io/badge/SQLite-003B57?style=for-the-badge&logo=sqlite&logoColor=white)
 
-1. Create a Django project and a `cinema` app inside it.
-2. `cinema` should have a `Movie` model that has the following fields:
-    * `title` - a film title
-    * `description` - a film description
-    * `duration` - a film duration in minutes
-3. Implement a serializer for this model.
-4. Create api views for the following endpoints:
-    * `GET api/cinema/movies/` - should return a list of the all movies
-    * `GET api/cinema/movies/<pk>/` - should return a movie with given id 
-    * `POST api/cinema/movies/` - should create a new movie based on passed data
-    * `PUT api/cinema/movies/<pk>/` - should update the movie with given id based on passed data
-    * `DELETE api/cinema/movies/<pk>/` - should delete the movie with given id
+</div>
 
-Use the following command to load prepared data from fixture to test and debug your code:
+## 🎯 Visão geral
 
-  `python manage.py loaddata cinema_service_db_data.json`
+API de estudo desenvolvida com **Django e Django REST Framework**, expondo operações CRUD para um catálogo de filmes. O código utiliza **generic class-based views** e serialização de modelos.
 
+> Projeto educacional da trilha Django, originalmente baseado em exercício da [Mate Academy](https://github.com/mate-academy/py-task-guideline). Não possui suíte de testes própria implementada em `cinema/tests.py`.
 
-### Note: Check your code using this [checklist](checklist.md) before pushing your solution.
+## ✨ Recursos
+
+O modelo `Movie` possui os campos **`title`**, **`description`** e **`duration`** (minutos).
+
+| Método | Rota | Operação |
+|---|---|---|
+| GET | `/api/cinema/movies/` | Listar filmes |
+| POST | `/api/cinema/movies/` | Cadastrar filme |
+| GET | `/api/cinema/movies/{id}/` | Consultar filme |
+| PUT | `/api/cinema/movies/{id}/` | Atualizar filme |
+| DELETE | `/api/cinema/movies/{id}/` | Remover filme |
+
+## 🏗️ Estrutura
+
+```text
+cinema/
+├── models.py         # Entidade Movie
+├── serializers.py    # Serialização DRF
+├── views.py          # ListCreate / RetrieveUpdateDestroy
+├── urls.py           # Rotas
+└── migrations/       # Migração do modelo
+cinema_service/       # Configurações Django
+manage.py             # Gerenciamento
+cinema_service_db_data.json # Fixture
+```
+
+## 🚀 Como executar localmente
+
+Utilize **Python compatível com as dependências do projeto** e um ambiente virtual limpo:
+
+```bash
+git clone https://github.com/WalterMatheusgg/py-movie-api.git
+cd py-movie-api
+python3 -m venv .venv-local
+source .venv-local/bin/activate
+python -m pip install django djangorestframework
+python manage.py migrate
+python manage.py runserver
+```
+
+Acesse `http://127.0.0.1:8000/api/cinema/movies/`. Para adicionar os dados de exemplo:
+
+```bash
+python manage.py loaddata cinema_service_db_data.json
+```
+
+**Importante:** versões não estão fixadas em um arquivo de dependências próprio. O repositório inclui `venv/`, `db.sqlite3` e `__pycache__` versionados; recomenda-se removê-los do Git futuramente e adicionar `requirements.txt` e `.gitignore` — isso **não foi alterado** nesta atualização de documentação.
+
+## 🧠 Conceitos praticados
+
+Modelagem Django, serializers, views genéricas, URLs, CRUD REST, migrations e fixtures.
+
+## 👨‍💻 Autor
+
+**Walter Matheus Soares da Silva** · [GitHub](https://github.com/WalterMatheusgg)
